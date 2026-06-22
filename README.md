@@ -15,12 +15,14 @@ An intelligent, obstacle-avoiding, and environment-aware smart car built on Ardu
 
 ## 🛠️ Components Used
 * **Microcontroller:** Arduino Uno / Nano (or compatible ATmega328P board)
-* **Motor Driver:** L298N Dual H-Bridge Motor Driver Module and two OB motors and one castor wheel to put at front
+* **Motor Driver:** L298N Dual H-Bridge Motor Driver Module and two BO motors and one castor wheel to put at front
 * **Distance Sensors:** HC-SR04 Ultrasonic Sensors (x2)
 * **Color Sensor:** Adafruit TCS34725 RGB Color Sensor
 * **Headlights:** LEDs (x2)
 * **Wireless Module:** HC-05 Bluetooth Module
 * **Prototyping:** Mini Breadboard (for power distribution)
+* **Batteries : ** Li-ion batteries and its holder
+* **Resistors : ** For bluetooth voltage divider circuit and appropriate resistors for LEDs
 
 ---
 
@@ -33,12 +35,20 @@ An intelligent, obstacle-avoiding, and environment-aware smart car built on Ardu
 | :--- | :--- | :--- |
 | **Battery Positive (+)** | **L298N 12V Power In** | High-current power direct to the motors |
 | **Battery Negative (-)** | **L298N GND** | Main ground return line |
-| **L298N GND** | **Arduino GND** | **Common Ground Connection** (Crucial for signal reference) |
+| **L298N GND** | **Arduino GND (explained below as GND bridging)** | **Common Ground Connection** (Crucial for signal reference) |
 | **L298N 5V Out** | **Arduino 5V Pin** | Logic power supply from the driver module to power the Arduino board |
 | **Arduino 5V** | **Breadboard Positive Rail**| Establishes the 5V power row for all sensors |
 | **Arduino GND** | **Breadboard Negative Rail**| Establishes the ground row for all components |
 | **Sensors VCC (All)** | **Breadboard Positive Rail**| Powers the logic sensors |
 | **Sensors GND (All)** | **Breadboard Negative Rail**| Completes the sensor ground loop |
+
+
+> ⭐**GND Bridging**
+
+* **The 3-Way Bridge:** The negative (GND) wire coming out of the battery holder is physically twisted and bridged directly with two separate wires.
+* **To Arduino & Driver:** One of those wires connects straight to the **GND pin on the Arduino**, and the other connects straight to the **GND terminal on the L298N motor driver**.
+* **To Sensor Rail:** A final extension wire runs from this same battery GND connection over to a single row on the mini breadboard to act as a shared GND rail for the low-power sensors.
+
 
 ### 2. DC Motors & L298N Driver Connections
 | Component Pin | Arduino Pin | Description |
@@ -81,3 +91,23 @@ Open any smartphone Bluetooth Terminal application, pair with your module, and u
 * `l` — Turn Left
 * `r` — Turn Right
 * `s` — Hard Stop Motors
+
+
+### 🔌 Physical Assembly 
+
+#### 1. Chassis setup
+* **Lower Deck:** Two yellow BO (Battery Operated) DC motors are mounted at the rear for driving power, balanced by an omnidirectional caster wheel at the front for steering freedom. The heavy battery holder is mounted underneath the chassis to keep the center of gravity low and prevent tipping.
+* **Upper Deck:** The Arduino, L298N motor driver, and the mini breadboard are secured on top for easy access and wiring.
+
+### 📶 Bluetooth Module (HC-05/HC-06) Logic Safety Note
+* **Arduino TX to Bluetooth RX Line:** Because the Arduino outputs 5V signals and the HC-05 module expects a safer 3.3V logic level on its receiving pin, a quick voltage divider is used to protect the module. 
+
+* **The Resistors:** A **1kΩ resistor** is connected in series from the Arduino TX pin to the HC-05 RX pin. Then, a **2kΩ resistor** one leg is first twisted to 1 kohm resistor and other side to a jumper wire that connect directly to the common GND rail. 
+
+* **Bluetooth TX to Arduino RX Line:** This line is connected straight through without any resistors, as the Arduino safely reads the module's 3.3V transmission as a clear high signal.
+
+
+
+
+
+   
