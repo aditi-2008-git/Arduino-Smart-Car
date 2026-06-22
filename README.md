@@ -47,7 +47,6 @@ An intelligent, obstacle-avoiding, and environment-aware smart car built on Ardu
 
 * **The 3-Way Bridge:** The negative (GND) wire coming out of the battery holder is physically twisted and bridged directly with two separate wires.
 * **To Arduino & Driver:** One of those wires connects straight to the **GND pin on the Arduino**, and the other connects straight to the **GND terminal on the L298N motor driver**.
-* **To Sensor Rail:** A final extension wire runs from this same battery GND connection over to a single row on the mini breadboard to act as a shared GND rail for the low-power sensors.
 
 
 ### 2. DC Motors & L298N Driver Connections
