@@ -14,7 +14,7 @@ An intelligent, obstacle-avoiding, and environment-aware smart car built on Ardu
 ---
 
 ## 🛠️ Components Used
-* **Microcontroller:** Arduino Uno / Nano (or compatible ATmega328P board)
+* **Microcontroller:** Arduino Uno
 * **Motor Driver:** L298N Dual H-Bridge Motor Driver Module and two BO motors and one castor wheel to put at front
 * **Distance Sensors:** HC-SR04 Ultrasonic Sensors (x2)
 * **Color Sensor:** Adafruit TCS34725 RGB Color Sensor
