@@ -21,8 +21,8 @@ An intelligent, obstacle-avoiding, and environment-aware smart car built on Ardu
 * **Headlights:** LEDs (x2)
 * **Wireless Module:** HC-05 Bluetooth Module
 * **Prototyping:** Mini Breadboard (for power distribution)
-* **Batteries : ** Li-ion batteries and its holder
-* **Resistors : ** For bluetooth voltage divider circuit and appropriate resistors for LEDs
+* **Batteries:** Li-ion batteries and its holder
+* **Resistors:** For bluetooth voltage divider circuit and appropriate resistors for LEDs
 
 ---
 
